@@ -1,0 +1,6 @@
+Stage	Stage_16
+Sigma	220.086593
+b	-0.025135
+a before	-1991.633985
+a middle	-1634.033656
+a after	325.039801
