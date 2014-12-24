@@ -8,6 +8,13 @@ SCUBA stands for "Single-cell Clustering Using Bifurcation Analysis." SCUBA is a
 
 Reference: Marco E, Karp RL, Guo G, Robson P, Hart AH, Trippa L, Yuan GC. Bifurcation analysis of single-cell gene expression data reveals epigenetic landscape. PNAS 2014; published ahead of print December 15, 2014, doi:10.1073/pnas.1408993111    
 
+
+Systems Requirements
+--------------------
+
+SCUBA is independent of operating systems because it is written in Matlab. Basic requirement for running SCUBA includes MATLAB and the Statistics toolbox. The pseudotime estimation step requires two external Matlab packages which are publicly available: drtoolbox (which can be downloaded from http://lvdmaaten.github.io/drtoolbox/), and ksegments (which can be downloaded from http://lear.inrialpes.fr/~verbeek/software.php). Another option is to utilize the R package princurve (which can be downloaded from http://cran.r-project.org/web/packages/princurve/index.html) for instead of ksegments for principal curve analysis. In this case, both R and Matlab are required for running SCUBA.   
+
+
 Usage
 -----
 
@@ -51,4 +58,33 @@ For each dataset, the results are deposited in the following three directories:
 intermediate_files, containing intermediate results from the analysis.
 figures, containing jpg figures of the analysis.
 results, containing the final results of the analysis.
+
+
+Examples
+--------
+
+Example 1: Analysis of qPCR data in Guo et al. "Resolution of cell fate decisions revealed by single-cell gene expression analysis from zygote to blastocyst.". Dev Cell. 2010 Apr 20;18(4):675-85.
+
+```
+>> PCR_preprocess('guo2010');
+>> SCUBA('guo2010')
+```
+
+Example 2: Analysis of RNAseq data in Deng et al. " Single-cell RNA-seq reveals dynamic, random monoallelic gene expression in mammalian cells." Science. 2014 Jan 10;343(6167):193-6.
+
+```
+>> RNAseq_preprocess('deng2014');
+>> SCUBA('deng2014')
+```
+
+Example 3: Analysis of Mass Cytometry data in Bendall et al. " Single-cell trajectory detection uncovers progression and regulatory coordination in human B cell development." Cell. 2014 Apr 24;157(3):714-25.
+
+```
+>> select_marker_names = {'CD10','CD117','CD179a','CD179b','CD19','CD20',...
+    'CD24','CD34','CD38','CD45','CD72','CD79b','HLADR','IgD','IgM-i','IgM-s','Kappa','Lambda'};
+>> MassCytometry_preprocess('bendall2014', select_marker_names, 'Rprincurve', 'CD34', 9)
+>>  SCUBA('bendall2014')
+>> plotGeneProfiles('bendall2014', {'CD19', 'CD20', 'CD34', 'CD10', 'CD38'})
+```
+
 

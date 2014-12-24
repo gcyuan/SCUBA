@@ -181,7 +181,7 @@ while iter < maxiter & iter_stop == 0,
     iter = iter + 1;
 end
 
-plotTree(T)
+plotTree(T, dataset)
 
 save(outfile, 'T');
 

@@ -1,8 +1,10 @@
-function plotTree(T)
+function plotTree(T, dataset)
 
 adjMatrix = zeros(max(T.clu_id));
 
-for index = 2:length(T.pa)   
+nZeros = sum(T.pa==0);
+
+for index = nZeros+1:length(T.pa)   
     adjMatrix(T.pa(index),T.clu_id(index)) = 1;
 end
 
@@ -29,11 +31,17 @@ nodeHandlers = BGH.Nodes;
      set(BGH.Nodes(indexNode),'Size', 1+floor([plotClusterSizes(indexNode)/sizeScale plotClusterSizes(indexNode)/sizeScale]), 'Shape','circle')
  end
 
-% g = biograph.bggui(BGH);
-% %             adjustBGPlot
-% f = figure('Color', 'w','pos',[520    80   554   718]);
-% copyobj(g.biograph.hgAxes,f);
-% delete(BGH)
-% delete(g)
+g = biograph.bggui(BGH);
+%             adjustBGPlot
+f = figure('Color', 'w','pos',[520    80   554   718]);
+copyobj(g.biograph.hgAxes,f);
+delete(BGH)
+delete(g)
+
+[~, ~, ~, ~, ~, ~, ~, figuresDir] = initialization(dataset);
+
+
+filenameFigure = fullfile(figuresDir, 'tree.jpg');
+saveas(gcf, filenameFigure,'jpg')
 
 end

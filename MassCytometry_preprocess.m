@@ -1,16 +1,29 @@
+function MassCytometry_preprocess(dataset, select_marker_names, pcvmethod, anchorGene, seed)
 %Preprocess Mass-cytometry data using the following steps
 %1. convert data from fcs to mat format
 %2. infer cell stage by using prinicipal curve analysis.
+% options for pcvmethod are 'Rprincurve' (default) and 'ksegments'
 
-function MassCytometry_preprocess(dataset);
+% option use a seed to ensure reproducibility of the results
+if exist('seed', 'var')
+    rng(seed)
+end
 
-rng(7)
+% set default pcvmethod
+if ~exist('pcvmethod', 'var')
+    pcvmethod = 'Rprincurve';
+end
 
-[dataFile processDataMat processDataTxt PCAdataFile dataFolder resultsDir intermediate_filesDir figuresDir] = initialization(dataset);
+% set default anchorGene
+if ~exist('anchorGene', 'var')
+    anchorGene = false;
+end
+
+[~, processDataMat, ~, ~, dataFolder, ~, ~, ~] = initialization(dataset);
 
 fcsfile = fullfile(dataFolder, [dataset, 'Data.fcs']);
 
-[fcsdat, fcshdr, fcsdatscaled] = fca_readfcs(fcsfile);
+[fcsdat, fcshdr, ~] = fca_readfcs(fcsfile);
 npar = length(fcshdr.par);
 select_col = 1:npar;
 nmarker = length(select_col);
@@ -30,11 +43,24 @@ end
 
 pro.cell = cell_id;
 
-select_marker = 3:(size(M,2)-1); %remove non-gene related parameters, such as time and cell_length.
+if nargin == 1
+    % We select all markers
+    select_marker = 3:(size(M,2)-1); %remove non-gene related parameters, such as time and cell_length.
+else
+    % We select a subset of markers
+    [~, select_marker] = ismember(select_marker_names, marker_names);
+end
+
 pro.expr = M(:, select_marker);
 pro.gname = marker_names(select_marker);
+
+if exist('seed', 'var')
+    pro.seed = seed;
+end
+pro.pcvmethod = pcvmethod;
+pro.anchorGene = anchorGene;
 
 save(processDataMat, 'pro');
 
 %Estimate the pseudotime
-EstimatePseudotime(dataset);
+EstimatePseudotime(dataset, pcvmethod, anchorGene);
