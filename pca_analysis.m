@@ -8,11 +8,12 @@ load(processDataMat);
 
 % Added to avoid conflict with the pca function of drtoolbox
 present_dir = pwd;
-cd(fullfile(toolboxdir('stats'),'stats'))
 
 if verLessThan('matlab','8') % older versions do not have pca
+cd(fullfile(toolboxdir('stats')))
     handle_pca = @princomp;
 else
+    cd(fullfile(toolboxdir('stats'),'stats'))
     handle_pca = @pca;
 end
 cd(present_dir)
