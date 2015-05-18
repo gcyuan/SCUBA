@@ -1,10 +1,17 @@
 %Process gene expression data by PCA analysis.
 
-function pca_analysis(dataset);
+function pca_analysis(dataset)
 
 [dataFile processDataMat processDataTxt PCAdataFile dataFolder resultsDir intermediate_filesDir figuresDir] = initialization(dataset);
 
 load(processDataMat);
+
+% Added to avoid conflict with the pca function of drtoolbox
+present_dir = pwd;
+cd(fullfile(toolboxdir('stats'),'stats'))
+handle_pca = @pca;
+cd(present_dir)
+
 
 %PCA analysis using all samples
 ncell = size(pro.expr, 1);
@@ -13,7 +20,7 @@ npca = min(ncell-1,ngene); %meaningful number of PCs
 
 mu = mean(pro.expr, 1);
 expr = pro.expr - repmat(mu, ncell, 1);
-[c, s] = pca(expr);
+[c, s] = handle_pca(expr);
 expr_all = pro.expr - repmat(mu, ncell, 1);
 s_all = expr_all * c;
 X = s_all(:, 1:npca); %reduced data
@@ -27,7 +34,7 @@ npca2 = min(length(I)-1,ngene); %meaningful number of PCs
 mu = mean(pro.expr(I, :), 1);
 nI = length(I);
 expr = pro.expr(I,:) - repmat(mu, nI, 1);
-[c, s] = pca(expr); 
+[c, s] = handle_pca(expr); 
 expr_all = pro.expr - repmat(mu, ncell, 1);
 s_all = expr_all * c;
 X = s_all(:, 1:npca2); %reduced data
