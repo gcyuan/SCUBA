@@ -181,7 +181,12 @@ while iter < maxiter & iter_stop == 0,
     iter = iter + 1;
 end
 
-plotTree(T, dataset)
+if license('test', 'bioinformatics_toolbox')
+    % Using biograph to plot the Tree
+    plotTree(T, dataset)
+else
+    disp('Bioinformatics toolbox not present. Tree will not be plotted.')
+end
 
 save(outfile, 'T');
 
