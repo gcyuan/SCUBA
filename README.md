@@ -63,21 +63,21 @@ results, containing the final results of the analysis.
 Examples
 --------
 
-Example 1: Analysis of qPCR data in Guo et al. "Resolution of cell fate decisions revealed by single-cell gene expression analysis from zygote to blastocyst.". Dev Cell. 2010 Apr 20;18(4):675-85.
+**Example 1:** Analysis of qPCR data in Guo et al. "Resolution of cell fate decisions revealed by single-cell gene expression analysis from zygote to blastocyst.". Dev Cell. 2010 Apr 20;18(4):675-85.
 
 ```
 >> PCR_preprocess('guo2010');
 >> SCUBA('guo2010')
 ```
 
-Example 2: Analysis of RNAseq data in Deng et al. " Single-cell RNA-seq reveals dynamic, random monoallelic gene expression in mammalian cells." Science. 2014 Jan 10;343(6167):193-6.
+**Example 2:** Analysis of RNAseq data in Deng et al. " Single-cell RNA-seq reveals dynamic, random monoallelic gene expression in mammalian cells." Science. 2014 Jan 10;343(6167):193-6.
 
 ```
 >> RNAseq_preprocess('deng2014');
 >> SCUBA('deng2014')
 ```
 
-Example 3: Analysis of Mass Cytometry data in Bendall et al. " Single-cell trajectory detection uncovers progression and regulatory coordination in human B cell development." Cell. 2014 Apr 24;157(3):714-25.
+**Example 3:** Analysis of Mass Cytometry data in Bendall et al. " Single-cell trajectory detection uncovers progression and regulatory coordination in human B cell development." Cell. 2014 Apr 24;157(3):714-25.
 
 ```
 >> select_marker_names = {'CD10','CD117','CD179a','CD179b','CD19','CD20',...
