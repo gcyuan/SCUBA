@@ -42,13 +42,13 @@ SCUBA is the main function. It has two arguments: 'dataset' and 'cluster_mode'.
 
 SCUBA has two main steps. In the first step, we infer the cellular hierarchy, using a binary tree model. For simplicity, we only consider steady-state attractors. In the second step, we quantitatively model the dynamics in the reduced state space along each bifurcation direction, using a potential V(x) to characterize gene expression dynamics associated with each bifurcation event.
 
-**Inference of cellular hierarchy using dynamic clustering**
+**Step 1. Inference of cellular hierarchy using dynamic clustering**
 
 initial_tree.m — This function provides an initial estimate the cellular hierarchy, using a series of k-means clustering.
 
 refine_tree.m — this function refines the tree structure by maximizing the penalized likelihood function (Equation 1 in the paper).  
 
-**Bifurcation analysis**
+**Step 2. Bifurcation analysis**
 
 bifurcation_direction.m — Infer the direction associated with each bifurcation and project data along the bifurcation directions.
 
