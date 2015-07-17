@@ -87,4 +87,8 @@ Example 3: Analysis of Mass Cytometry data in Bendall et al. " Single-cell traje
 >> plotGeneProfiles('bendall2014', {'CD19', 'CD20', 'CD34', 'CD10', 'CD38'})
 ```
 
+Change Log
+----------
+July 17, 2015. Updated PCR_Preprocess.m and RNAseq_Preprocess.m. In the original version, running pseudotime estimate would cause an error because it assumes the input contains cell_stage information. This error is now fixed.
 
+Updated bifurcation_analysis.m. The potential is calculated only if there are sufficient cells in all relevant clusters.  
