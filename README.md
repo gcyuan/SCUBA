@@ -36,7 +36,7 @@ Each script takes 'dataset' as input, where 'dataset' is the name of the dataset
 
 SCUBA is the main function. It has two arguments: 'dataset' and 'cluster_mode'.
 'dataset' refers to the name of the dataset, which is also the name of the data folder.
-'cluster_mode' refers to the method for clustering. It can have three values. 'original' -- using the Euclidean distance; 'pca' -- convert the data to principal components then apply Euclidean distance; 'pca2' — similar to 'pca' but PCA analysis is based on samples in the final cell-stage (used in our paper).   
+'cluster_mode' refers to the method for clustering. It can have three values. **'original'** -- using the Euclidean distance; **'pca'** -- convert the data to principal components then apply Euclidean distance; **'pca2'** — similar to 'pca' but PCA analysis is based on samples in the final cell-stage (used in our paper).   
 
 SCUBA has two main steps. In the first step, we infer the cellular hierarchy, using a binary tree model. For simplicity, we only consider steady-state attractors. In the second step, we quantitatively model the dynamics in the reduced state space along each bifurcation direction, using a potential V(x) to characterize gene expression dynamics associated with each bifurcation event.
 
