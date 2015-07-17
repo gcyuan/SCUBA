@@ -38,7 +38,7 @@ else
     for index = 1:nbif,
         results = getScores(bif, T, index, makePlot);
         results.genes = pro.gname';
-        if length(results.scoreFinal) > minNCellsInBifurcation
+        if length(results.scoreFinal) > minNCellsInBifurcation & length(results.scoreParentParentCluster) > 0.5*minNCellsInBifurcation & length(results.scoreParentCluster) > 0.5*minNCellsInBifurcation
             results = fitDistribution(results,dataFolder,makePlot,options);
             results = reductionSimulations(results, bif.direction(:, index));
             allResults(index) = {results};
@@ -47,7 +47,7 @@ else
         end
     end
     
-    if length(results.scoreFinal) > minNCellsInBifurcation
+    if length(results.scoreFinal) > minNCellsInBifurcation & length(results.scoreParentParentCluster) > 0.5*minNCellsInBifurcation & length(results.scoreParentCluster) > 0.5*minNCellsInBifurcation
         saveAllResults(dataFolder, allResults)
     end
 end
