@@ -32,7 +32,7 @@ MassCytometry_preprocess.m — for MassCytometry data. Data are in the binary .f
 
 Each script takes 'dataset' as input, where 'dataset' is the name of the dataset, e.g. 'guo2010'. The preprocessed data are saved as a mat file in the intermediate directory. 
 
-*Run SCUBA*
+**Run SCUBA**
 
 SCUBA is the main function. It has two arguments: 'dataset' and 'cluster_mode'.
 'dataset' refers to the name of the dataset, which is also the name of the data folder.
@@ -40,13 +40,13 @@ SCUBA is the main function. It has two arguments: 'dataset' and 'cluster_mode'.
 
 SCUBA has two main steps. In the first step, we infer the cellular hierarchy, using a binary tree model. For simplicity, we only consider steady-state attractors. In the second step, we quantitatively model the dynamics in the reduced state space along each bifurcation direction, using a potential V(x) to characterize gene expression dynamics associated with each bifurcation event.
 
-*Inference of cellular hierarchy using dynamic clustering*
+**Inference of cellular hierarchy using dynamic clustering**
 
 initial_tree.m — This function provides an initial estimate the cellular hierarchy, using a series of k-means clustering.
 
 refine_tree.m — this function refines the tree structure by maximizing the penalized likelihood function (Equation 1 in the paper).  
 
-*Bifurcation analysis*
+**Bifurcation analysis**
 
 bifurcation_direction.m — Infer the direction associated with each bifurcation and project data along the bifurcation directions.
 
