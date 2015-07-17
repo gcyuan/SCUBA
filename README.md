@@ -22,6 +22,8 @@ Unzip the package. Change the current directory in Matlab to the folder containi
 
 The data for SCUBA analysis has to be placed in the folder 'sample_data', in a folder specifying the dataset. The package comes with three datasets and their corresponding folders: 'guo2010', 'deng2014' and 'bendall2014'. Prepare the data in an appropriate format (.txt or .fcs) with a standardized name. See below for detailed description.
 
+**Preprocessing**
+
 Run one of the three preprocessing scripts: 
 
 PCR_preprocess.m  — for qPCR data. Data are tab-delimited text format. First row contains the cell ID. Second row contains the cell-stage information. The rest contains the gene expression data matrix. Example: guo2010Data.txt   
