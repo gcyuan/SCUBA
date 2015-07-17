@@ -52,7 +52,9 @@ gname = c{1};
 clear pro;
 pro.gname = gname;
 ngene = length(gname);
-pro.cell_stage = cell_stage;
+if exist('cell_stage'),
+    pro.cell_stage = cell_stage;
+end
 pro.cell = cell_id;
 pro.expr = zeros(ncell, ngene);
 for k = 1:ncell,
@@ -79,6 +81,9 @@ end
 
 if txtout_mode == 1,
     %output data
+    if pseudotime_mode == 1,
+        load(processDataMat);
+    end
     fout = fopen(processDataTxt, 'w+');
     fprintf(fout, '%s\n', header1);
     
