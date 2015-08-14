@@ -45,7 +45,7 @@ gname = c{1};
 clear pro;
 pro.gname = gname;
 ngene = length(gname);
-if exist(cell_stage),
+if exist('cell_stage'),
     pro.cell_stage = cell_stage;
 end
 pro.cell = cell_id;
