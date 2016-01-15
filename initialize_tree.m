@@ -74,7 +74,7 @@ Wk = zeros(1, kmax);
 G = zeros(1, kmax);
 for k = 1:kmax,
     [idx, c, sumd] = kmeans(X, k, 'replicates', 20);
-    Wk(k) = sum(sumd)/nsamp;
+    Wk(k) = sum(sumd)/N;
     G(k) = Wk0(k) - Wk(k);
 end
 [Gmax, imax] = max(G);
