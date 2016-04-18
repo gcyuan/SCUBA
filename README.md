@@ -32,7 +32,11 @@ RNAseq_preprocess.m — for RNAseq data. Data are tab-delimited text format. Fir
 
 MassCytometry_preprocess.m — for MassCytometry data. Data are in the binary .fcs format for flow cytometry experiments. This preprocessing step contains a pseudotime estimation algorithm. Example: bendall2014Data.fcs. Note that processing this dataset requires a machine with at least 40 Gb of memory.
 
-Each script takes 'dataset' as input, where 'dataset' is the name of the dataset, e.g. 'guo2010'. The preprocessed data are saved as a mat file in the intermediate directory. 
+Each script takes two inputs: 'dataset' and 'pseudotime_mode':
+
+'dataset' is the name of the dataset, e.g. 'guo2010'. The preprocessed data are saved as a mat file in the intermediate directory. 
+
+'pseudotime_mode' is set to be 0 (default), if the temporal information is provided (i.e., the second row contains 'Stage' information'), or 1 if the temporal information needs to be inferred computationally. SCUBA uses the principal curve analysis to infer temporal information, but the results should be used with caution. 
 
 **Run SCUBA**
 
@@ -94,3 +98,7 @@ Change log
 **July 17, 2015.** Updated PCR_Preprocess.m and RNAseq_Preprocess.m. In the original version, running pseudotime estimate would cause an error because it assumes the input contains cell_stage information. This error is now fixed.
 
 Updated bifurcation_analysis.m. The potential is calculated only if there are sufficient cells in all relevant clusters.  
+
+**April 18, 2016.** Updated README.md (this file).
+
+Updated the 'EstimatePseudotime.m' to prevent an R runtime error.
