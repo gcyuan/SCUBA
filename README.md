@@ -36,7 +36,7 @@ Each script takes two inputs: 'dataset' and 'pseudotime_mode':
 
 'dataset' is the name of the dataset, e.g. 'guo2010'. The preprocessed data are saved as a mat file in the intermediate directory. 
 
-'pseudotime_mode' is set to be 0 (default), if the temporal information is provided (i.e., the second row contains 'Stage' information'), or 1 if the temporal information needs to be inferred computationally. SCUBA uses the principal curve analysis to infer temporal information, but the results should be used with caution. 
+'pseudotime_mode' is set to be 0 (default), if the temporal information is provided (i.e., the second row contains 'Stage'), or 1 if the temporal information needs to be inferred computationally. SCUBA uses the principal curve analysis to infer temporal information, but the results should be used with caution. 
 
 **Run SCUBA**
 
