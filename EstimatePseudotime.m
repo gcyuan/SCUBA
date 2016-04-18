@@ -57,10 +57,9 @@ end
 switch pcvmethod
     case 'Rprincurve'
         % Calling R's principal curve
-%         system(['Rscript principal_curve_analysis_tsne_d3.R ' dataset]);
-%         %old
+        % system(['Rscript principal_curve_analysis_tsne_d3.R ' dataset]);  %old
         % Replace the following line by the appropriate path for Rscript
-        Rscript = '"C:\Program Files\R\R-3.2.5\bin\Rscript"'; %
+        Rscript = '"C:\Program Files\R\R-3.2.5\bin\Rscript"';
         eval([' system([', '''', Rscript, ' principal_curve_analysis_tsne_d3.R ', '''', ' dataset]);']);
         
         % pcvin = fullfile(intermediate_filesDir, [dataset '_tsne_d' num2str(ndim) '_pcv.csv']);
