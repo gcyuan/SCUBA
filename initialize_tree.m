@@ -69,7 +69,8 @@ end
 N = length(I);
 
 %Estimate the number of clusters at initial stage.
-kmax = min(10, length(I));
+%kmax = min(10, length(I));
+kmax = 1;
 Wk = zeros(1, kmax);
 G = zeros(1, kmax);
 for k = 1:kmax,
