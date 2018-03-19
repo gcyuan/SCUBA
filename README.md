@@ -50,7 +50,7 @@ SCUBA has two main steps. In the first step, we infer the cellular hierarchy, us
 
 initial_tree.m — This function provides an initial estimate the cellular hierarchy, using a series of k-means clustering.
 
-refine_tree.m — this function refines the tree structure by maximizing the penalized likelihood function (Equation 1 in the paper).  
+refine_tree.m — this function refines the tree structure by maximizing the penalized likelihood function (Equation 1 in the paper).   
 
 **Step 2. Bifurcation analysis**
 
@@ -61,7 +61,10 @@ bifurcation_analysis.m  — Infer the dynamical changes of gene expression patte
 reductionSimulations.m  — Function to predict the effects of perturbing potential regulators in the lineage bias.
 
 For each dataset, the results are deposited in the following three directories:
-intermediate_files, containing intermediate results from the analysis.
+intermediate_files, containing intermediate results from the analysis. Please note the .mat files may contain additional information than the .txt files. 
+
+**Important: the final tree structure is saved as 'T' in the file 'final_tree.mat'. Cell cluster assignment information is saved as the subfield: 'T.s'.** 
+
 figures, containing jpg figures of the analysis.
 results, containing the final results of the analysis.
 
