@@ -66,9 +66,9 @@ For each dataset, the results are deposited in the following three directories:
 
 **Important: the final tree structure is saved as 'T' in the file 'final_tree.mat'. Cell cluster assignment information is saved as the subfield: 'T.s'.** 
 
-**figures,** containing jpg figures of the analysis.
+**2. figures,** containing jpg figures of the analysis.
 
-**results,"" containing the final results of the analysis.
+**3. results,** containing the final results of the analysis.
 
 
 Examples
