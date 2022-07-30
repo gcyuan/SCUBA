@@ -1,6 +1,9 @@
 SCUBA (MATLAB version)
 ======================
 
+## Note: 
+This package is no longer being maintained.
+
 Overview
 --------
 
